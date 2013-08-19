@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<model xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" databaseProvider="MySql5" connectionString="server=estable-dev.cb6ejem1cpwv.ap-southeast-2.rds.amazonaws.com;User Id=Administrator;password=Administrator;database=establedb;Persist Security Info=True" name="" defaultIdentityGenerator="HiLo" xmlns="http://namespaces.mindscape.co.nz/nhmodel">
+  <entities>
+    <entity name="TblOwner" tableName="tbl_owner">
+      <entityProperties>
+        <entityProperty name="OwnerName" size="50" columnName="Owner_Name">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="OwnerEmail" size="50" columnName="Owner_Email">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="OwnerUserId" columnName="Owner_User_ID" isNullable="true" dataType="Int32" />
+        <entityProperty name="SyndicatePersonInd" columnName="Syndicate_Person_Ind" isNullable="true" dataType="SByte" />
+        <entityProperty name="SyndicateName" size="30" columnName="Syndicate_Name" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="30" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Address" columnName="Address">
+          <validations>
+            <notNullValidation />
+          </validations>
+        </entityProperty>
+        <entityProperty name="PhoneDaytime" size="20" columnName="Phone_Daytime" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="PhoneNighttime" size="20" columnName="Phone_Nighttime" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Mobile" size="20" columnName="Mobile" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="InternalComments" columnName="Internal_Comments" isNullable="true" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="OwnerId" columnName="Owner_ID" />
+      </identityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="0bd5938f-0a20-4d2d-aa26-112b669861ab" collectionName="TblOwnerships" keyColumnName="Owner_ID" backreferenceName="Owner" isDependent="true">
+          <entityMoniker name="//TblOwnership" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="2573f07f-fb0e-4b22-8fa9-f11e318aa178" collectionName="TblSyndicateMembers" keyColumnName="Owner_ID" backreferenceName="Owner" isDependent="true">
+          <entityMoniker name="//TblSyndicateMember" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="TblUserOfSupportPortal" tableName="tbl_user_of_support_portal">
+      <entityProperties>
+        <entityProperty name="SupportUserEmail" size="50" columnName="Support_User_Email">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="SupportPasswrd" size="20" columnName="Support_Passwrd">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="ActiveInd" columnName="Active_Ind" dataType="SByte" />
+        <entityProperty name="ForcePwChange" columnName="Force_PW_Change" dataType="SByte" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="SupportUserId" columnName="Support_User_ID" />
+      </identityProperties>
+    </entity>
+    <entity name="TblOwnership" tableName="tbl_ownership">
+      <entityProperties>
+        <entityProperty name="PcentOwned" columnName="Pcent_Owned" dataType="Double" />
+        <entityProperty name="InvoiceInd" columnName="Invoice_Ind" dataType="SByte" />
+        <entityProperty name="Comment" columnName="Comment" isNullable="true" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="OwnerId" columnName="Owner_ID" />
+        <identityProperty name="StableAnimalId" columnName="Stable_Animal_ID" />
+      </identityProperties>
+    </entity>
+    <entity name="TblStable" tableName="tbl_stable">
+      <entityProperties>
+        <entityProperty name="StableTypeId" columnName="Stable_Type_ID" dataType="Int32" />
+        <entityProperty name="CountryCode" columnName="Country_Code" dataType="Int32" />
+        <entityProperty name="StableName" size="50" columnName="Stable_Name">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Trainer" size="50" columnName="Trainer">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="LegalName" size="50" columnName="Legal_Name">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Address" columnName="Address" isNullable="true" />
+        <entityProperty name="Mobile" size="20" columnName="Mobile" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Phone" size="20" columnName="Phone" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Fax" size="20" columnName="Fax" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="GstVatTaxNumber" size="20" columnName="GST_VAT_TAX_Number" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="GstRateCurrent" columnName="GST_Rate_Current" isNullable="true" dataType="Double" />
+        <entityProperty name="GstEffectiveDate" columnName="GST_Effective_Date" isNullable="true" dataType="DateTime" />
+        <entityProperty name="GstRatePrevious" columnName="GST_Rate_Previous" isNullable="true" dataType="Double" />
+        <entityProperty name="NextInvoice" columnName="Next_Invoice" dataType="Int32" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="StableId" columnName="Stable_ID" />
+      </identityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="64d15f25-039b-4e52-bb88-3e27e75528b9" collectionName="TblStableAnimals" keyColumnName="Stable_ID" backreferenceName="Stable" isDependent="true">
+          <entityMoniker name="//TblStableAnimal" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="36c28aca-6561-4927-9cf1-db5f02a92322" collectionName="TblStableChargeTypes" keyColumnName="Stable_ID" backreferenceName="Stable" isDependent="true">
+          <entityMoniker name="//TblStableChargeType" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="628568e2-53e8-4750-a63f-b57d615c8e90" collectionName="TblStableStandardCharges" keyColumnName="Stable_ID" backreferenceName="Stable" isDependent="true">
+          <entityMoniker name="//TblStableStandardCharge" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="ee838967-00f1-4754-aaee-550650d666be" collectionName="TblStableUsers" keyColumnName="Stable_ID" backreferenceName="Stable" isDependent="true">
+          <entityMoniker name="//TblStableUser" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="TblStableAnimal" tableName="tbl_stable_animal">
+      <entityProperties>
+        <entityProperty name="StableId" columnName="Stable_ID" dataType="Int32" />
+        <entityProperty name="StableName" size="50" columnName="Stable_Name" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="RacingName" size="50" columnName="Racing_Name" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Sire" size="50" columnName="Sire">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Dam" size="50" columnName="Dam">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Gender" size="50" columnName="Gender" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Dob" columnName="DOB" isNullable="true" dataType="DateTime" />
+        <entityProperty name="Colour" size="50" columnName="Colour" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Markings" size="50" columnName="Markings" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="StableAnimalId" columnName="Stable_Animal_ID" />
+      </identityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="166b1dd3-fa3b-40e9-88de-0dda127ec44b" collectionName="TblOwnerships" keyColumnName="Stable_Animal_ID" backreferenceName="StableAnimal" isDependent="true">
+          <entityMoniker name="//TblOwnership" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="e5099d1e-38b8-4481-9451-573f087ae574" collectionName="TblStableAnimalChargeNotes" keyColumnName="Stable_Animal_ID" backreferenceName="StableAnimal" isDependent="true">
+          <entityMoniker name="//TblStableAnimalChargeNote" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="b18ec510-272f-473c-a13b-3fcfd6d0307d" collectionName="TblStableMovements" keyColumnName="Stable_Animal_ID" backreferenceName="StableAnimal" isDependent="true">
+          <entityMoniker name="//TblStableMovement" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="TblStableAnimalChargeNote" tableName="tbl_stable_animal_charge_note">
+      <entityProperties>
+        <entityProperty name="StableAnimalId" columnName="Stable_Animal_ID" dataType="Int32" />
+        <entityProperty name="EventDate" columnName="Event_Date" dataType="DateTime" />
+        <entityProperty name="ChargeDescription" size="50" columnName="Charge_Description">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Value" columnName="Value" isNullable="true" dataType="Decimal" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="StableAnimalChargeNoteId" columnName="Stable_Animal_Charge_Note_ID" />
+      </identityProperties>
+    </entity>
+    <entity name="TblStableChargeType" tableName="tbl_stable_charge_type">
+      <entityProperties>
+        <entityProperty name="StableId" columnName="Stable_ID" dataType="Int32" />
+        <entityProperty name="ChargeType" size="50" columnName="Charge_Type">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="InOutOfStable" columnName="In_Out_of_Stable" dataType="Char" />
+        <entityProperty name="ChargeRate" columnName="Charge_Rate" isNullable="true" dataType="Decimal" />
+        <entityProperty name="ChargingUnit" size="10" columnName="Charging_Unit">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="10" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="StableChargeTypeId" columnName="Stable_Charge_Type_ID" />
+      </identityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="4d50fe95-e9c3-423b-a3b6-8367e2d34744" collectionName="TblStableMovements" keyColumnName="Stable_Charge_Type_ID" backreferenceName="StableChargeType" isDependent="true">
+          <entityMoniker name="//TblStableMovement" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="TblStableMovement" tableName="tbl_stable_movement">
+      <identityProperties>
+        <identityProperty name="StableAnimalId" columnName="Stable_Animal_ID" />
+        <identityProperty name="StableChargeTypeId" columnName="Stable_Charge_Type_ID" />
+        <identityProperty name="FromDate" columnName="From_Date" dataType="DateTime" />
+      </identityProperties>
+    </entity>
+    <entity name="TblStableStandardCharge" tableName="tbl_stable_standard_charge">
+      <entityProperties>
+        <entityProperty name="StableId" columnName="Stable_ID" dataType="Int32" />
+        <entityProperty name="Description" size="50" columnName="Description">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Value" columnName="Value" dataType="Decimal" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="StableStandardChargeId" columnName="Stable_Standard_Charge_ID" />
+      </identityProperties>
+    </entity>
+    <entity name="TblStableType" tableName="tbl_stable_type">
+      <entityProperties>
+        <entityProperty name="Description" size="50" columnName="Description">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="StableTypeId" columnName="Stable_Type_ID" />
+      </identityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="5df7f140-528b-4f38-bf9e-01677c8a8a74" collectionName="TblStables" keyColumnName="Stable_Type_ID" backreferenceName="StableType" isDependent="true">
+          <entityMoniker name="//TblStable" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="0db85a9c-1242-462c-87fb-9eba439fe5c3" collectionName="TblStableTypeTranslations" keyColumnName="Stable_Type_ID" backreferenceName="StableType" isDependent="true">
+          <entityMoniker name="//TblStableTypeTranslation" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="TblStableTypeTranslation" tableName="tbl_stable_type_translations">
+      <entityProperties>
+        <entityProperty name="StableTypeId" columnName="Stable_Type_ID" dataType="Int32" />
+        <entityProperty name="StandardWord" size="30" columnName="Standard_Word">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="30" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="TranslatedTo" size="30" columnName="Translated_To">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="30" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="TranslationId" columnName="Translation_ID" />
+      </identityProperties>
+    </entity>
+    <entity name="TblStableUser" tableName="tbl_stable_user">
+      <entityProperties>
+        <entityProperty name="InviteExpires" columnName="Invite_Expires" isNullable="true" dataType="DateTime" />
+        <entityProperty name="ActiveInd" columnName="Active_Ind" dataType="SByte" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="UserId" columnName="User_ID" />
+        <identityProperty name="StableId" columnName="Stable_ID" />
+      </identityProperties>
+    </entity>
+    <entity name="TblSyndicateMember" tableName="tbl_syndicate_member">
+      <entityProperties>
+        <entityProperty name="OwnerId" columnName="Owner_ID" dataType="Int32" />
+        <entityProperty name="OwnerUserId" columnName="Owner_User_ID" dataType="Int32" />
+        <entityProperty name="Name" size="50" columnName="Name">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="SyndicateMemberEmail" size="50" columnName="Syndicate_Member_Email">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="PhoneDaytime" size="20" columnName="Phone_Daytime" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Mobile" size="20" columnName="Mobile" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="PhoneNighttime" size="20" columnName="Phone_Nighttime" isNullable="true">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Address" columnName="Address" isNullable="true" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="SyndicateMemberId" columnName="Syndicate_Member_ID" />
+      </identityProperties>
+    </entity>
+    <entity name="TblUserOfOwnerPortal" tableName="tbl_user_of_owner_portal">
+      <entityProperties>
+        <entityProperty name="OwnerUserEmail" size="50" columnName="Owner_User_Email">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="OwnerPassword" size="20" columnName="Owner_Password">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="20" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="InviteExpires" columnName="Invite_Expires" isNullable="true" dataType="DateTime" />
+        <entityProperty name="ActiveInd" columnName="Active_Ind" dataType="SByte" />
+        <entityProperty name="ForcePwChange" columnName="Force_PW_Change" dataType="SByte" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="OwnerUserId" columnName="Owner_User_ID" />
+      </identityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="4140a783-c719-4bbc-9cbd-27d54c3c9f2b" collectionName="TblOwners" keyColumnName="Owner_User_ID" backreferenceName="OwnerUser">
+          <entityMoniker name="//TblOwner" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="2a2afa26-f4a1-4292-83b5-b8c12f19554d" collectionName="TblSyndicateMembers" keyColumnName="Owner_User_ID" backreferenceName="OwnerUser" isDependent="true">
+          <entityMoniker name="//TblSyndicateMember" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="TblUserOfStablePortal" tableName="tbl_user_of_stable_portal">
+      <entityProperties>
+        <entityProperty name="UserEmail" size="50" columnName="User_Email">
+          <validations>
+            <notNullValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Passwrd" columnName="Passwrd" dataType="Int32" />
+        <entityProperty name="ActiveInd" columnName="Active_Ind" dataType="SByte" />
+        <entityProperty name="ForcePwChange" columnName="Force_PW_Change" dataType="SByte" />
+      </entityProperties>
+      <identityProperties>
+        <identityProperty name="UserId" columnName="User_ID" />
+      </identityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="7190f85b-4e1c-4d9d-9ead-47a089809e62" collectionName="TblStableUsers" keyColumnName="User_ID" backreferenceName="User" isDependent="true">
+          <entityMoniker name="//TblStableUser" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+  </entities>
+  <policies>
+    <codeGenerationPolicy Id="4dff6181-3710-43f1-a029-492f099b1947" layout="FilePerType" />
+  </policies>
+</model>
